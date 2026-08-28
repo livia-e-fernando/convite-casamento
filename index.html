@@ -129,10 +129,50 @@ background-repeat: no-repeat;
     transform 2s ease 2s;
 
   transform-style: preserve-3d;
+}
 
-    box-shadow: inset 0 0 0 .5px #9f9f9f;
 
-    background: #FAFAF8;
+/* FRENTE E VERSO DA ABA RETANGULAR */
+
+.rect-flap-front,
+.rect-flap-back {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+
+/* LADO VISÍVEL COM O ENVELOPE FECHADO */
+
+.rect-flap-front {
+  background: #FAFAF8;
+
+  box-shadow:
+    inset 0 0 0 .5px #9f9f9f;
+}
+
+
+/* LADO VISÍVEL DEPOIS DE ABRIR */
+
+.rect-flap-back {
+  background-color: #FAFAF8;
+
+  background-image: url("Aquarela.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  box-shadow:
+    inset 0 0 0 .5px #9f9f9f;
+
+  transform: rotateX(180deg);
 }
 
 /* TEXTO "TOQUE" */
@@ -313,7 +353,10 @@ background-repeat: no-repeat;
 
       <div class="flap"></div>
 
-      <div class="rect-flap"></div>
+      <div class="rect-flap">
+        <div class="rect-flap-front"></div>
+        <div class="rect-flap-back"></div>
+      </div>
 
     <div class="seal">
       LiFe
