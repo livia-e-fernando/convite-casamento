@@ -52,7 +52,7 @@ body {
   cursor: pointer;
 
   transition:
-    transform 1s ease;
+    transform 2s ease;
 }
 
 /* FUNDO DO ENVELOPE */
@@ -167,8 +167,8 @@ body {
   transform: rotateX(0deg);
 
   transition:
-    transform 1s ease,
-    z-index 0s linear 1s;
+    transform 2s ease,
+    z-index 0s linear 2s;
 
   z-index: 6;
 
@@ -193,7 +193,7 @@ body {
   transform: rotateX(0deg);
 
   transition:
-    transform 1s ease 1s;
+    transform 2s ease 2s;
 
   transform-style: preserve-3d;
 
@@ -221,7 +221,7 @@ body {
 
   white-space: nowrap;
 
-  transition: opacity .4s ease;
+  transition: opacity 1s ease;
 }
 
 /* SELO */
@@ -260,8 +260,8 @@ body {
     0 4px 10px rgba(0,0,0,.25);
 
   transition:
-    opacity .35s ease,
-    transform .4s ease;
+    opacity .5s ease,
+    transform 1s ease;
 
   pointer-events: none;
 }
@@ -311,7 +311,7 @@ body {
 @media (min-width: 769px) {
 
   .envelope-wrapper.open .envelope-back {
-    animation: zoom-convite 1.2s ease 2.5s forwards;
+    animation: zoom-convite 2s ease 4s forwards;
     transform-origin: center center;
   }
 
