@@ -330,6 +330,53 @@ background-repeat: no-repeat;
 
 }
 
+  .click-area {
+  position: fixed;
+
+  width: 120px;
+  height: 120px;
+
+  background: transparent;
+
+  opacity: 0;
+  pointer-events: none;
+
+  z-index: 100;
+}
+
+/* aparece depois que o zoom termina */
+body:has(.envelope-wrapper.open) .click-area {
+  animation: ativar-click 0s linear 6s forwards;
+}
+
+@keyframes ativar-click {
+  to {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+  @media (min-width: 769px) {
+
+  .click-area {
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+  }
+
+}
+  @media (max-width: 768px) {
+
+  .click-area {
+    left: 50%;
+    top: 45%;
+
+    transform: translate(-50%, -50%);
+  }
+
+}
+
   
 </style>
 </head>
@@ -365,7 +412,8 @@ background-repeat: no-repeat;
   </div>
 
 </div>
-
+  
+<div class="click-area"></div>
 
 <script>
 
