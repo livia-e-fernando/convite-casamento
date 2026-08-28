@@ -227,13 +227,34 @@ body {
 
   transition:
     transform 1s ease,
-    z-index 0s linear .4s;
+    z-index 0s linear .8s;
 
   z-index: 6;
 
   pointer-events: none;
 
   backface-visibility: visible;
+}
+
+  .rect-flap {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 4;
+
+  transform-origin: bottom center;
+
+  transform: rotateX(0deg);
+
+  transition:
+    transform .1s ease .8s;
+
+  transform-style: preserve-3d;
 }
 
 /* TEXTO "TOQUE" */
@@ -373,11 +394,12 @@ body {
 
     </div>
 
-    <div class="flap"></div>
+      <div class="flap"></div>
 
-    <div class="envelope-front"></div>
-
-    <div class="bottom-fold"></div>
+      <div class="rect-flap">
+        <div class="envelope-front"></div>
+        <div class="bottom-fold"></div>
+      </div>
 
     <div class="seal">
       LiFe
