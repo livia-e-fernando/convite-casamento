@@ -310,7 +310,30 @@ body {
   }
 
 }
+@media (min-width: 769px) {
 
+  .envelope-wrapper.open .envelope-back {
+    animation: zoom-convite 1.2s ease 2.5s forwards;
+    transform-origin: center center;
+  }
+
+  @keyframes zoom-convite {
+
+    0% {
+      transform: scale(1);
+      z-index: 10;
+    }
+
+    100% {
+      transform: scale(2);
+      z-index: 10;
+    }
+
+  }
+
+}
+
+  
 </style>
 </head>
 
@@ -372,29 +395,6 @@ envelope.addEventListener("keydown", function(event) {
     abrirConvite();
 
   }
-
-  @media (min-width: 769px) {
-
-  .envelope-wrapper.open .envelope-back {
-    animation: zoom-convite 1.2s ease 2.5s forwards;
-    transform-origin: center center;
-  }
-
-  @keyframes zoom-convite {
-
-    0% {
-      transform: scale(1);
-      z-index: 10;
-    }
-
-    100% {
-      transform: scale(2);
-      z-index: 10;
-    }
-
-  }
-
-}
 
 });
 
