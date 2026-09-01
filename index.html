@@ -310,14 +310,20 @@ background-repeat: no-repeat;
 }
 
   .click-area {
-  position: fixed;
+  position: absolute;
 
-  width: 70px;
-  height: 70px;
+  left: 50%;
+  top: 70%;
+
+  width: 10%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+
+  transform: translate(-50%, -50%);
 
   border-radius: 100%;
 
-  background: transparent; /* TEMPORÁRIO PARA TESTE */
+  background: transparent;
 
   opacity: 0;
   pointer-events: none;
@@ -338,28 +344,6 @@ body:has(.envelope-wrapper.open) .click-area {
     pointer-events: auto;
   }
 }
-
-  @media (min-width: 769px) {
-
-  .click-area {
-    left: 50%;
-    top: calc(50% + 124px);
-
-    transform: translate(-50%, 50%);
-  }
-
-}
-  @media (max-width: 768px) {
-
-  .click-area {
-    left: 50%;
-    top: calc(50% + 2px);
-
-    width: 35px;
-    height: 35px;
-
-    transform: translate(-50%, -50%);
-  }
 
 }
 
@@ -382,7 +366,13 @@ body:has(.envelope-wrapper.open) .click-area {
 
     <div class="envelope-back">
 
-    </div>
+  <a
+    class="click-area"
+    href="https://livia-e-fernando.my.canva.site/"
+    aria-label="Abrir site"
+  ></a>
+
+</div>
 
       <div class="flap"></div>
 
@@ -396,12 +386,6 @@ body:has(.envelope-wrapper.open) .click-area {
   </div>
 
 </div>
-  
-<a
-  class="click-area"
-  href="https://livia-e-fernando.my.canva.site/"
-  aria-label="Abrir site"
-></a>
 
 <script>
 
