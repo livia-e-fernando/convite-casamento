@@ -1,1 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Lívia e Fernando</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  background: #273025;
+
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* ÁREA GERAL */
+
+.scene {
+  width: min(90vw, 520px);
+  height: min(90vh, 700px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  perspective: 1200px;
+}
+
+/* CONJUNTO DO ENVELOPE */
+
+.envelope-wrapper {
+  position: relative;
+
+   top: -120px;
+
+  width: 420px;
+  max-width: 88vw;
+  aspect-ratio: 1.388 / 1;
+
+  cursor: pointer;
+
+  transition:
+    transform 2s ease;
+}
+
+/* FUNDO DO ENVELOPE */
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+
+  background-color: #F2EBDD;
+background-image: url("Hochzeitseinladung.png");
+background-size: 100% 100%;
+background-position: center;
+background-repeat: no-repeat;
+
+  border-radius: 3px;
+
+  box-shadow:
+  inset 0 0 0 .5px #9f9f9f,
+  0 20px 50px rgba(0,0,0,.18);
+
+  z-index: 1;
+}
+
+/* ABA SUPERIOR */
+
+.flap {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 59.3%;
+
+  background-image: url("Aba Triangular.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transform-origin: top center;
+
+  transform: rotateX(0deg);
+
+  transition:
+    transform 2s ease,
+    z-index 0s linear 2s;
+
+  z-index: 6;
+
+  pointer-events: none;
+
+  backface-visibility: visible;
+}
+
+  .rect-flap {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 4;
+
+  transform-origin: bottom center;
+
+  transform: rotateX(0deg);
+
+  transition:
+    transform 2s ease 2s;
+
+  transform-style: preserve-3d;
+}
+
+
+/* FRENTE E VERSO DA ABA RETANGULAR */
+
+.rect-flap-front,
+.rect-flap-back {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+
+/* LADO VISÍVEL COM O ENVELOPE FECHADO */
+
+.rect-flap-front {
+  background-image: url("Aba Retangular.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  box-shadow:
+    inset 0 0 0 .5px #9f9f9f;
+}
+
+
+/* LADO VISÍVEL DEPOIS DE ABRIR */
+
+.rect-flap-back {
+  background-color: #FAFAF8;
+
+  background-image: url("Aquarela.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  box-shadow:
+    inset 0 0 0 .5px #9f9f9f;
+
+  transform: rotateX(180deg);
+}
+
+/* TEXTO "TOQUE" */
+
+.tap-message {
+  position: absolute;
+
+  left: 50%;
+  bottom: -55px;
+
+  transform: translateX(-50%);
+
+  color: #666;
+
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+
+  transition: opacity 1s ease;
+}
+
+/* SELO */
+
+.seal {
+  position: absolute;
+
+  left: 50%;
+  top: 48%;
+
+  transform: translate(-50%, -50%);
+
+  width: 120px;
+  height: auto;
+
+  z-index: 7;
+
+  transition:
+    opacity .5s ease,
+    transform 1s ease;
+
+  pointer-events: none;
+}
+
+/* =========================
+   ENVELOPE ABERTO
+   ========================= */
+.envelope-wrapper.open {
+  cursor: default;
+}
+  
+.envelope-wrapper.open .flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+  .envelope-wrapper.open .rect-flap {
+  transform: rotateX(-180deg);
+}
+
+.envelope-wrapper.open .seal {
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    scale(.7);
+}
+
+.envelope-wrapper.open .tap-message {
+  opacity: 0;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 500px) {
+
+  .envelope-front::before {
+    border-left-width: 44vw;
+    border-top-width: 28vw;
+  }
+
+  .envelope-front::after {
+    border-right-width: 44vw;
+    border-top-width: 28vw;
+  }
+
+}
+@media (min-width: 769px) {
+
+  .seal {
+    width: 150px;
+  }
+
+  .envelope-wrapper.open .envelope-back {
+    animation: zoom-convite 2s ease 4s forwards;
+    transform-origin: center center;
+  }
+
+  @keyframes zoom-convite {
+
+  0% {
+    transform: translateY(0) scale(1);
+    z-index: 10;
+  }
+
+  100% {
+    transform: translateY(120px) scale(2);
+    z-index: 10;
+  }
+
+}
+
+}
+
+  @media (max-width: 768px) {
+
+  .envelope-wrapper.open .envelope-back {
+    animation: zoom-convite-mobile 2s ease 4s forwards;
+    transform-origin: center center;
+  }
+
+  @keyframes zoom-convite-mobile {
+
+    0% {
+      transform: scale(1);
+      z-index: 10;
+    }
+
+    100% {
+      transform: scale(1.2);
+      z-index: 10;
+    }
+
+  }
+
+}
+
+  .click-area {
+  position: absolute;
+
+  left: 50%;
+  top: 81.2%;
+
+  width: 10.5%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 100%;
+
+  background: transparent;
+
+  opacity: 0;
+  pointer-events: none;
+
+  cursor: pointer;
+
+  z-index: 100;
+}
+
+/* aparece depois que o zoom termina */
+body:has(.envelope-wrapper.open) .click-area {
+  animation: ativar-click 0s linear 6s forwards;
+}
+
+@keyframes ativar-click {
+  to {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+}
+
+  
+</style>
+</head>
+
+
+<body>
+
+<div class="scene">
+
+  <div
+    class="envelope-wrapper"
+    id="envelope"
+    role="button"
+    tabindex="0"
+    aria-label="Abrir convite"
+  >
+
+    <div class="envelope-back">
+
+  <a
+    class="click-area"
+    href="https://livia-e-fernando.my.canva.site/"
+    aria-label="Abrir site"
+  ></a>
+
+</div>
+
+      <div class="flap"></div>
+
+      <div class="rect-flap">
+        <div class="rect-flap-front"></div>
+        <div class="rect-flap-back"></div>
+      </div>
+
+    <img class="seal" src="Selo.png" alt="Selo">
+
+  </div>
+
+</div>
+
+<script>
+
+const envelope = document.getElementById("envelope");
+
+function abrirConvite() {
+
+  if (!envelope.classList.contains("open")) {
+
+    envelope.classList.add("open");
+
+  }
+
+}
+
+envelope.addEventListener("click", abrirConvite);
+
+envelope.addEventListener("keydown", function(event) {
+
+  if (event.key === "Enter" || event.key === " ") {
+
+    abrirConvite();
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>
